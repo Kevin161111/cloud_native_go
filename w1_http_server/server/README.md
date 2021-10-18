@@ -1,4 +1,4 @@
-### 
+### 镜像构建和nsenter操作
 构建本地镜像,第一次写的时候忘记不同平台的区别,直接将mac编译的二进制文件放到dockerfile中,不能正常运行
 
 `docker build -t gohttp:v1.1 .`
@@ -6,6 +6,7 @@
 将镜像推送到Docker官方镜像仓库
 
 `docker tag gohttp:v1.1 kevin1111/gohttp:v1.1`
+
 `docker push kevin1111/gohttp:v1.1`
 
 通过Docker 命令本地启动httpserver
@@ -14,7 +15,9 @@
 
 通过nsenter 进入容器查看IP配置
 `docker ps | grep gohttp`
+
 `docker inspect ae98047d9fe4 | grep -i pid`
+
 `nsenter -t 99266 -n ip a`
 
 
